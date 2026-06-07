@@ -1,0 +1,36 @@
+<view class="page mode-page safe-bottom">
+  <view class="book-page mode-book">
+    <view class="mode-hero">
+      <view class="kicker">HOW TO PLAY</view>
+      <view class="title">选择完成方式</view>
+      <view class="subtitle">你们已经选择「{{questionSet.title}}」。接下来只需要决定：坐在一起慢慢聊，还是两台手机同步答。</view>
+      <view class="version-note">{{questionSet.description}}</view>
+    </view>
+
+    <view class="mode-list">
+      <view class="mode-card same" bindtap="startSameDevice">
+        <image class="mode-illustration" src="/assets/mode-same.jpg" mode="aspectFit"></image>
+        <view class="mode-scrim"></view>
+        <view class="mode-content">
+          <view class="mode-meta">适合线下</view>
+          <view class="mode-title">面对面同屏</view>
+          <view class="mode-desc">两个人坐在一起，用一台手机轮流记录。适合见面时自然推进，也适合不想被设备打断的对话。</view>
+          <view class="mode-link">翻到准备页</view>
+        </view>
+      </view>
+
+      <view class="mode-card invite" bindtap="startInvite">
+        <image class="mode-illustration" src="/assets/mode-invite.jpg" mode="aspectFit"></image>
+        <view class="mode-scrim"></view>
+        <view class="mode-content">
+          <view class="mode-meta warm">适合双机</view>
+          <view class="mode-title">双机同步答</view>
+          <view class="mode-desc">创建双人房间并分享给对方。两个人各自用手机回答，当前题都提交后再看见彼此内容。</view>
+          <view class="mode-link warm">{{creating ? '正在创建...' : '创建房间'}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="page-number">02</view>
+  </view>
+</view>

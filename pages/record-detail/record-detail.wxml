@@ -1,0 +1,45 @@
+<view class="page detail-page safe-bottom">
+  <view class="book-page detail-book">
+    <view class="result-hero">
+      <image class="result-hero-art" src="/assets/flow-question.jpg" mode="aspectFill"></image>
+      <view class="result-hero-scrim"></view>
+      <view class="result-hero-content">
+        <view class="kicker">DIALOGUE RECORD</view>
+        <view class="title">一段被认真听见的对话</view>
+        <view class="subtitle">{{record.versionTitle || '爱情三十六问'}} · {{durationText || '已完成'}}</view>
+        <view class="result-stats">{{answerCount || 36}}题 · {{memberCount || 1}}人 · 完整问答</view>
+      </view>
+    </view>
+
+    <view class="share-panel">
+      <view class="share-panel-desc">已保存，可分享结果或生成完整长图</view>
+      <button
+        class="share-result-button"
+        open-type="share"
+        bindtap="prepareShareResult"
+        disabled="{{local && !shareReady}}"
+      >{{local && !shareReady ? (preparingShare ? '正在准备分享' : '准备分享') : '分享结果'}}</button>
+      <view class="image-result-button" bindtap="generateImage">{{generating ? '正在生成完整长图' : '生成完整长图'}}</view>
+      <view class="save-note">
+        <view class="save-dot"></view>
+        <view>已存入「我的记录」</view>
+      </view>
+    </view>
+
+    <view wx:if="{{imagePath}}" class="image-ready" bindtap="previewImage">完整长图已生成，点这里再次打开。预览页可长按保存。</view>
+
+    <view class="record-section-title">完整问答</view>
+    <view wx:for="{{recordAnswers}}" wx:key="questionIndex" class="answer-card">
+      <view class="answer-q">Q{{item.questionIndex}} {{item.question}}</view>
+      <view wx:for="{{item.answers}}" wx:for-item="answer" wx:for-index="answerIndex" wx:key="nickName" class="answer-line">
+        <view class="answer-avatar {{answerIndex === 0 ? 'first' : 'second'}}">{{answerIndex === 0 ? '♡' : '✦'}}</view>
+        <view class="answer-bubble">
+          <view class="answer-text">{{answer.answer || '未记录'}}</view>
+        </view>
+      </view>
+    </view>
+
+    <canvas canvas-id="recordCanvas" class="record-canvas" style="height: {{canvasHeight}}px;"></canvas>
+    <view class="page-number">R</view>
+  </view>
+</view>

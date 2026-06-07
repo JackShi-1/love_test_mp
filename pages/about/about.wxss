@@ -1,0 +1,28 @@
+.about-book {
+  padding: 0 0 76rpx;
+  background: #fffdf8;
+}
+
+.about-hero {
+  padding: 48rpx 40rpx 22rpx;
+}
+
+.about-card {
+  margin: 0 32rpx;
+  padding: 30rpx 0 30rpx;
+  border-bottom: 1rpx solid rgba(54, 76, 88, 0.11);
+}
+
+.about-title {
+  color: #263640;
+  font-size: 34rpx;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.about-text {
+  margin-top: 14rpx;
+  color: #4f5d62;
+  font-size: 27rpx;
+  line-height: 1.68;
+}

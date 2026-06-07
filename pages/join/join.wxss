@@ -1,0 +1,289 @@
+.join-book {
+  min-height: calc(100vh - 76rpx);
+  box-sizing: border-box;
+  padding: 24rpx 24rpx calc(176rpx + env(safe-area-inset-bottom));
+  background: #fffdf8;
+}
+
+.join-hero {
+  position: relative;
+  height: 390rpx;
+  margin: -24rpx -24rpx 0;
+  overflow: hidden;
+  background: #fbefe6;
+}
+
+.join-art {
+  width: 100%;
+  height: 100%;
+}
+
+.join-scrim {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.12) 0%, rgba(255, 253, 248, 0.5) 48%, #fffdf8 100%),
+    linear-gradient(90deg, rgba(255, 253, 248, 0.78) 0%, rgba(255, 253, 248, 0.32) 64%, rgba(255, 253, 248, 0.72) 100%);
+}
+
+.join-copy {
+  position: absolute;
+  right: 30rpx;
+  bottom: 30rpx;
+  left: 30rpx;
+}
+
+.join-copy .title {
+  margin-top: 6rpx;
+}
+
+.join-copy .subtitle {
+  max-width: 620rpx;
+  color: #5f6d72;
+  line-height: 1.55;
+}
+
+.state-card,
+.room-card {
+  margin-top: 30rpx;
+  padding: 28rpx;
+  border-radius: 22rpx;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow:
+    0 12rpx 30rpx rgba(66, 55, 43, 0.06),
+    inset 0 0 0 1rpx rgba(54, 76, 88, 0.08);
+}
+
+.room-label {
+  color: #9a6a4e;
+  font-size: 23rpx;
+  font-weight: 650;
+}
+
+.room-name-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12rpx;
+  margin-top: 8rpx;
+}
+
+.room-name {
+  margin-top: 8rpx;
+  color: #263640;
+  font-size: 46rpx;
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+.room-name-row .room-name {
+  margin-top: 0;
+}
+
+.edit-icon,
+.member-edit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 50%;
+  color: #365c73;
+  background: #edf3f0;
+  font-size: 25rpx;
+  font-weight: 650;
+}
+
+.room-reused {
+  padding: 7rpx 14rpx;
+  border-radius: 999rpx;
+  color: #9a5a39;
+  background: #fbede3;
+  font-size: 21rpx;
+  font-weight: 650;
+}
+
+.room-meta-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 18rpx;
+  margin-top: 26rpx;
+}
+
+.state-title {
+  margin-top: 28rpx;
+  color: #263640;
+  font-size: 34rpx;
+  font-weight: 650;
+}
+
+.room-meta-row .state-title {
+  margin-top: 0;
+}
+
+.state-desc {
+  margin-top: 10rpx;
+  color: #6d777b;
+  font-size: 27rpx;
+  line-height: 1.5;
+}
+
+.room-meta-row .state-desc {
+  margin-top: 0;
+}
+
+.member-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+  margin-top: 28rpx;
+}
+
+.member-item {
+  display: flex;
+  align-items: center;
+  gap: 18rpx;
+  color: #4f5d62;
+  font-size: 27rpx;
+}
+
+.member-name {
+  color: #4f5d62;
+  font-size: 28rpx;
+  font-weight: 650;
+}
+
+.member-edit {
+  width: 42rpx;
+  height: 42rpx;
+  font-size: 22rpx;
+}
+
+.muted-member {
+  color: #8b9496;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54rpx;
+  height: 54rpx;
+  border-radius: 50%;
+  color: #ffffff;
+  background: #365c73;
+  font-size: 25rpx;
+  font-weight: 650;
+}
+
+.avatar.empty {
+  color: #7a8588;
+  background: #edf3f0;
+}
+
+.join-actions {
+  position: fixed;
+  right: 28rpx;
+  bottom: calc(24rpx + env(safe-area-inset-bottom));
+  left: 28rpx;
+  z-index: 30;
+  display: flex;
+  gap: 18rpx;
+  padding: 0;
+  border-radius: 24rpx;
+  background: transparent;
+  box-shadow: none;
+}
+
+.join-button {
+  flex: 1;
+  min-height: 88rpx;
+  padding: 0;
+  border: 0;
+  border-radius: 999rpx;
+  box-shadow: none;
+}
+
+.join-button::after {
+  border: 0;
+}
+
+.preview-button {
+  color: #9a5a39;
+  border: 0;
+  background: #f7e4d9;
+}
+
+.edit-mask {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  display: flex;
+  align-items: flex-end;
+  background: rgba(38, 54, 64, 0.34);
+}
+
+.edit-dialog {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 18rpx 28rpx calc(34rpx + env(safe-area-inset-bottom));
+  border-radius: 26rpx 26rpx 0 0;
+  background: #fffdf8;
+  box-shadow: 0 -18rpx 42rpx rgba(38, 54, 64, 0.14);
+}
+
+.dialog-grip {
+  width: 72rpx;
+  height: 8rpx;
+  margin: 0 auto 22rpx;
+  border-radius: 999rpx;
+  background: rgba(54, 76, 88, 0.18);
+}
+
+.edit-title {
+  color: #263640;
+  font-size: 32rpx;
+  font-weight: 650;
+}
+
+.edit-input {
+  width: 100%;
+  min-height: 88rpx;
+  box-sizing: border-box;
+  margin-top: 18rpx;
+  padding: 0 24rpx;
+  border: 1rpx solid rgba(54, 76, 88, 0.12);
+  border-radius: 18rpx;
+  background: rgba(255, 255, 255, 0.82);
+  color: #263640;
+  font-size: 30rpx;
+}
+
+.wechat-name {
+  display: inline-flex;
+  margin-top: 18rpx;
+  padding: 8rpx 16rpx;
+  border-radius: 999rpx;
+  color: #365c73;
+  background: #edf3f0;
+  font-size: 24rpx;
+  font-weight: 650;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 18rpx;
+  margin-top: 24rpx;
+}
+
+.edit-button {
+  flex: 1;
+  min-height: 82rpx;
+}

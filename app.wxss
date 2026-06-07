@@ -1,0 +1,143 @@
+page {
+  min-height: 100%;
+  color: #263640;
+  background: #f7f5f0;
+  font-family: "LXGW WenKai", "Kaiti SC", "STKaiti", "Songti SC", serif;
+}
+
+view,
+text,
+button,
+input,
+textarea {
+  font-family: "LXGW WenKai", "Kaiti SC", "STKaiti", "Songti SC", serif;
+}
+
+.page {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.book-page {
+  position: relative;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 24rpx 28rpx 56rpx;
+  border: 0;
+  border-radius: 0;
+  background: linear-gradient(90deg, rgba(54, 76, 88, 0.08) 0, rgba(54, 76, 88, 0.02) 18rpx, rgba(255, 253, 248, 0.98) 18rpx, rgba(255, 253, 248, 0.98) 100%);
+  box-shadow: none;
+  overflow: hidden;
+  animation: pageIn 260ms ease-out both;
+}
+
+.page-number {
+  position: absolute;
+  right: 34rpx;
+  bottom: 10rpx;
+  color: #a69d91;
+  font-size: 22rpx;
+}
+
+@keyframes pageIn {
+  from {
+    opacity: 0;
+    transform: translateX(18rpx) rotateY(-4deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) rotateY(0);
+  }
+}
+
+.title {
+  color: #263640;
+  font-family: "LXGW WenKai", "Kaiti SC", "STKaiti", "Songti SC", serif;
+  font-size: 44rpx;
+  font-weight: 650;
+  letter-spacing: 0;
+  line-height: 1.18;
+}
+
+.subtitle {
+  margin-top: 16rpx;
+  color: #6d777b;
+  font-size: 27rpx;
+  line-height: 1.6;
+}
+
+.card {
+  box-sizing: border-box;
+  border: 1rpx solid rgba(54, 76, 88, 0.1);
+  border-radius: 16rpx;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: none;
+}
+
+.primary-button,
+.secondary-button,
+.ghost-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 92rpx;
+  box-sizing: border-box;
+  border-radius: 14rpx;
+  font-size: 29rpx;
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+.primary-button {
+  color: #ffffff;
+  background: #365c73;
+}
+
+.secondary-button {
+  color: #ffffff;
+  background: #c97852;
+}
+
+.turn-button {
+  position: relative;
+}
+
+.turn-button::after {
+  margin-left: 12rpx;
+  content: "›";
+  font-size: 34rpx;
+  line-height: 1;
+}
+
+.ghost-button {
+  color: #365c73;
+  border: 1rpx solid rgba(54, 92, 115, 0.22);
+  background: rgba(255, 255, 255, 0.76);
+}
+
+.muted {
+  color: #7b8588;
+}
+
+.section-title {
+  color: #263640;
+  font-size: 32rpx;
+  font-weight: 650;
+}
+
+.kicker {
+  color: #9a6a4e;
+  font-size: 23rpx;
+  font-weight: 650;
+  letter-spacing: 0;
+}
+
+.hairline {
+  height: 1rpx;
+  background: rgba(54, 76, 88, 0.12);
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}

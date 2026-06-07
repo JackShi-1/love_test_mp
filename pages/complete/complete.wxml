@@ -1,0 +1,30 @@
+<view class="page complete-page safe-bottom">
+  <view class="book-page">
+    <view class="receipt-mark">
+      <view class="receipt-line"></view>
+      <view class="receipt-line short"></view>
+      <view class="receipt-stamp">36</view>
+    </view>
+    <view class="kicker center">DIALOGUE COMPLETED</view>
+    <view class="title center">恭喜完成这次对话</view>
+    <view class="subtitle center">希望这次慢下来的交流，让你们更了解彼此。</view>
+
+    <view class="result-card">
+      <view class="result-label">答题类型</view>
+      <view class="result-main">{{record.versionTitle || '爱情三十六问'}}</view>
+      <view class="result-label">本次总时长</view>
+      <view class="result-main">{{durationText || '已完成'}}</view>
+    </view>
+
+    <view class="action-list">
+      <view class="primary-button turn-button" bindtap="openRecord">查看完整记录</view>
+      <button
+        class="secondary-button share-button"
+        open-type="share"
+        disabled="{{!shareReady}}"
+      >{{shareReady ? '分享结果' : '正在准备分享'}}</button>
+      <view class="ghost-button" bindtap="backHome">回到封面</view>
+    </view>
+    <view class="page-number">END</view>
+  </view>
+</view>

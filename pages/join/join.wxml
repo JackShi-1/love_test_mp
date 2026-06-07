@@ -1,0 +1,79 @@
+<view class="page join-page safe-bottom">
+  <view class="book-page join-book">
+    <view class="join-hero">
+      <image class="join-art" src="/assets/mode-invite.jpg" mode="aspectFit"></image>
+      <view class="join-scrim"></view>
+      <view class="join-copy">
+        <view class="kicker">INVITATION</view>
+        <view class="title">双人房间</view>
+        <view class="subtitle">把邀请发给对方。对方加入后，你们可以同步完成；也可以先一个人进入预览流程。</view>
+      </view>
+    </view>
+
+    <view wx:if="{{error}}" class="state-card">
+      <view class="state-title">暂时无法进入</view>
+      <view class="state-desc">{{error}}</view>
+    </view>
+
+    <view wx:elif="{{loading}}" class="state-card">
+      <view class="state-title">正在同步房间</view>
+      <view class="state-desc">请稍等片刻。</view>
+    </view>
+
+    <view wx:else class="room-card">
+      <view class="room-label">房间名</view>
+      <view class="room-name-row">
+        <view class="room-name">{{roomName}}</view>
+        <view class="edit-icon" bindtap="openRoomNameEditor">✎</view>
+        <view wx:if="{{reused}}" class="room-reused">上一次没用完的房间</view>
+      </view>
+      <view class="room-meta-row">
+        <view class="state-title">{{state.versionTitle}}</view>
+        <view class="state-desc">已加入 {{state.members.length}} / 2 人</view>
+      </view>
+
+      <view class="member-list">
+        <view wx:for="{{state.members}}" wx:key="openid" class="member-item">
+          <view class="avatar">{{index + 1}}</view>
+          <view class="member-name">{{item.nickName || (index === 0 ? '我' : '对方')}}</view>
+          <view wx:if="{{item.openid === myOpenid}}" class="member-edit" bindtap="openNickNameEditor">✎</view>
+        </view>
+        <view wx:if="{{state.members.length < 2}}" class="member-item muted-member">
+          <view class="avatar empty">2</view>
+          <view>等待对方加入</view>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{!error && !loading && state}}" class="join-actions">
+      <button wx:if="{{state.members.length < 2}}" class="secondary-button join-button" open-type="share">
+        邀请对方加入
+      </button>
+      <view wx:if="{{state.members.length < 2}}" class="ghost-button join-button preview-button" data-preview="1" bindtap="startFlow">先进入看看</view>
+      <view wx:else class="primary-button join-button turn-button" bindtap="startFlow">翻到准备页</view>
+    </view>
+
+    <view class="page-number">03</view>
+  </view>
+
+  <view wx:if="{{editDialogVisible}}" class="edit-mask" catchtap="closeEditDialog">
+    <view class="edit-dialog" catchtap="noop">
+      <view class="dialog-grip"></view>
+      <view class="edit-title">{{editingTitle}}</view>
+      <input
+        class="edit-input"
+        type="{{editingType === 'nick' ? 'nickname' : 'text'}}"
+        value="{{editingValue}}"
+        maxlength="{{editingType === 'room' ? 12 : 10}}"
+        focus="{{editDialogVisible}}"
+        placeholder="{{editingType === 'room' ? '给房间起个名字' : '填写你的昵称'}}"
+        bindinput="onEditInput"
+      />
+      <view wx:if="{{editingType === 'nick'}}" class="wechat-name" bindtap="useWechatNickName">尝试使用微信昵称</view>
+      <view class="edit-actions">
+        <view class="ghost-button edit-button" bindtap="closeEditDialog">取消</view>
+        <view class="primary-button edit-button" bindtap="saveEditDialog">{{savingEdit ? '保存中' : '保存'}}</view>
+      </view>
+    </view>
+  </view>
+</view>

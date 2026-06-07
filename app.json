@@ -1,0 +1,22 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/mode/mode",
+    "pages/join/join",
+    "pages/flow/flow",
+    "pages/complete/complete",
+    "pages/mine/mine",
+    "pages/record-detail/record-detail",
+    "pages/guide/guide",
+    "pages/about/about"
+  ],
+  "window": {
+    "navigationBarTitleText": "爱情三十六问",
+    "navigationBarBackgroundColor": "#F5F7FA",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F5F7FA"
+  },
+  "style": "v2",
+  "lazyCodeLoading": "requiredComponents",
+  "sitemapLocation": "sitemap.json"
+}

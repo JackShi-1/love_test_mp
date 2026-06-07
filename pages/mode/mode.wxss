@@ -1,0 +1,129 @@
+.mode-book {
+  padding: 34rpx 24rpx 56rpx;
+  background: #fffdf8;
+}
+
+.mode-hero {
+  padding: 4rpx 4rpx 8rpx;
+}
+
+.mode-page .title {
+  margin-top: 6rpx;
+}
+
+.mode-page .subtitle {
+  max-width: 670rpx;
+  margin-top: 18rpx;
+  color: #5f6d72;
+  font-size: 27rpx;
+  line-height: 1.65;
+}
+
+.version-note {
+  margin-top: 20rpx;
+  padding: 18rpx 22rpx;
+  border-radius: 16rpx;
+  color: #48626f;
+  background: #edf3f0;
+  font-size: 24rpx;
+  line-height: 1.5;
+}
+
+.mode-list {
+  display: flex;
+  flex-direction: column;
+  gap: 26rpx;
+  margin-top: 30rpx;
+}
+
+.mode-card {
+  position: relative;
+  height: 480rpx;
+  overflow: hidden;
+  border-radius: 22rpx;
+  background: #f8f1e8;
+  box-shadow:
+    0 14rpx 30rpx rgba(66, 55, 43, 0.08),
+    inset 0 0 0 1rpx rgba(54, 76, 88, 0.08);
+}
+
+.mode-card.invite {
+  background: #fbefe6;
+}
+
+.mode-illustration {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.mode-scrim {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.02) 0%, rgba(255, 253, 248, 0.22) 35%, rgba(255, 253, 248, 0.94) 100%),
+    linear-gradient(90deg, rgba(255, 253, 248, 0.08) 0%, rgba(255, 253, 248, 0.42) 64%, rgba(255, 253, 248, 0.76) 100%);
+}
+
+.mode-card.invite .mode-scrim {
+  background:
+    linear-gradient(180deg, rgba(255, 249, 243, 0.02) 0%, rgba(255, 249, 243, 0.22) 35%, rgba(255, 249, 243, 0.94) 100%),
+    linear-gradient(90deg, rgba(255, 249, 243, 0.08) 0%, rgba(255, 249, 243, 0.42) 64%, rgba(255, 249, 243, 0.76) 100%);
+}
+
+.mode-content {
+  position: absolute;
+  right: 28rpx;
+  bottom: 28rpx;
+  left: 28rpx;
+}
+
+.mode-meta {
+  display: inline-flex;
+  padding: 8rpx 16rpx;
+  border-radius: 999rpx;
+  color: #365c73;
+  background: rgba(237, 243, 240, 0.95);
+  font-size: 22rpx;
+  font-weight: 650;
+}
+
+.mode-meta.warm {
+  color: #9a5a39;
+  background: rgba(251, 237, 227, 0.95);
+}
+
+.mode-title {
+  margin-top: 18rpx;
+  color: #263640;
+  font-size: 38rpx;
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+.mode-desc {
+  margin-top: 12rpx;
+  color: #53646a;
+  font-size: 26rpx;
+  line-height: 1.55;
+}
+
+.mode-link {
+  margin-top: 20rpx;
+  color: #365c73;
+  font-size: 26rpx;
+  font-weight: 650;
+  line-height: 1.35;
+}
+
+.mode-link::after {
+  margin-left: 10rpx;
+  content: ">";
+}
+
+.mode-link.warm {
+  color: #9a5a39;
+}

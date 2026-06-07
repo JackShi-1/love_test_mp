@@ -1,0 +1,42 @@
+<view class="page guide-page safe-bottom">
+  <view class="book-page guide-book">
+    <view class="guide-hero">
+      <view class="kicker">GUIDE</view>
+      <view class="title">使用说明</view>
+      <view class="subtitle">了解这组问题，也选择更适合你们的版本。</view>
+    </view>
+
+    <view class="guide-card">
+      <view class="guide-title">什么是爱情三十六问</view>
+      <view class="guide-text">爱情三十六问源自一组促进亲密感建立的深度提问。它不是测试，也不负责给关系下结论，而是帮两个人把注意力放回彼此：认真提问，认真回答，认真听完。</view>
+    </view>
+
+    <view class="version-card aron">
+      <view class="version-label">亚瑟·阿伦原版</view>
+      <view class="version-title">从陌生到靠近</view>
+      <view class="guide-text">问题从轻松的自我介绍开始，逐渐进入记忆、家庭、脆弱和真实愿望。适合初识、约会早期，或想重新认识彼此的伴侣。</view>
+    </view>
+
+    <view class="version-card goodbye">
+      <view class="version-label">再见爱人版</view>
+      <view class="version-title">从关系里重新听见彼此</view>
+      <view class="guide-text">表达更贴近长期关系和现实相处，会把话题慢慢带回共同经历、未说出口的感受、关系复盘与重新靠近。适合情侣、夫妻，或想认真聊一聊关系的人。</view>
+    </view>
+
+    <view class="guide-card">
+      <view class="guide-title">记录方式</view>
+      <view class="guide-text">可以面对面同屏记录，也可以用双机同步答。双机同步答中，每题需要双方都提交后再看见彼此内容，减少互相影响。</view>
+    </view>
+
+    <view class="guide-card">
+      <view class="guide-title">关于计时</view>
+      <view class="guide-text">每题 10 分钟、对视 4 分钟都只是参考。计时结束只会提醒，不会自动跳转，你们可以按自己的节奏继续。</view>
+    </view>
+
+    <view class="guide-card">
+      <view class="guide-title">温馨提示</view>
+      <view class="guide-text">这是一个亲密关系沟通工具，不是心理测试、心理诊断，也不能替代专业心理咨询。</view>
+    </view>
+    <view class="page-number">G</view>
+  </view>
+</view>

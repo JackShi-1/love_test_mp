@@ -1,0 +1,44 @@
+<view class="page home safe-bottom">
+  <view class="book-page cover-page">
+    <view class="hero-art-wrap">
+      <image class="hero-art" src="/assets/home-yearbook-hero.jpg" mode="aspectFill"></image>
+    </view>
+    <view class="hero">
+      <view class="title">爱情三十六问</view>
+      <view class="subtitle">选一套问题，留一段不被打断的时间。慢慢问，也慢慢听。</view>
+    </view>
+
+    <view class="type-list">
+      <view wx:for="{{questionSets}}" wx:key="id" class="type-card {{item.id === 'goodbye-love' ? 'relationship-card' : 'aron-card'}}" data-id="{{item.id}}" bindtap="chooseVersion">
+        <image class="type-bg" src="{{item.bg}}" mode="aspectFill"></image>
+        <view class="type-scrim"></view>
+        <view class="type-content">
+          <view class="type-eyebrow">{{item.mood}}</view>
+          <view class="type-summary">{{item.summary}}</view>
+          <view class="type-tags">
+            <view wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this" class="type-tag">{{tag}}</view>
+          </view>
+          <view class="type-desc">{{item.scenario}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="home-links">
+      <view bindtap="goMine">我的记录</view>
+      <view class="dot"></view>
+      <view bindtap="goGuide">使用说明</view>
+    </view>
+    <view class="page-number">01</view>
+  </view>
+
+  <view wx:if="{{showProfilePrompt}}" class="profile-mask">
+    <view class="profile-dialog">
+      <view class="profile-dialog-title">用你的微信昵称吗？</view>
+      <view class="profile-dialog-desc">昵称只用于房间参与者、回答记录和分享结果页展示，也可以先跳过。</view>
+      <view class="profile-dialog-actions">
+        <view class="profile-skip" bindtap="skipProfilePrompt">先跳过</view>
+        <view class="profile-confirm" bindtap="useWechatProfile">使用微信昵称</view>
+      </view>
+    </view>
+  </view>
+</view>

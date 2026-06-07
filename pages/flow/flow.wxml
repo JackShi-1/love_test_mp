@@ -1,0 +1,199 @@
+<view class="page flow-page safe-bottom">
+  <view class="book-page flow-book flow-{{stage}}">
+    <block wx:if="{{stage === 'prepare'}}">
+      <view class="center-stage">
+        <view class="prepare-hero">
+          <image class="prepare-art" src="/assets/flow-prepare.jpg" mode="aspectFit"></image>
+        </view>
+        <view class="prepare-copy">
+          <view class="kicker">BEFORE START</view>
+          <view class="title">开始前，先慢下来</view>
+          <view class="subtitle">找一个安静的位置，把手机放在你们都能看到的地方。接下来不急着回答，先认真听完彼此。</view>
+        </view>
+
+        <view class="prepare-card">
+          <view class="prepare-item">
+            <view class="prepare-num">01</view>
+            <view class="prepare-text">整段对话大约 45 分钟，可以按你们自己的节奏继续。</view>
+          </view>
+          <view class="prepare-item">
+            <view class="prepare-num">02</view>
+            <view class="prepare-text">每 12 题会停下来休息一次，不需要赶进度。</view>
+          </view>
+          <view class="prepare-item">
+            <view class="prepare-num">03</view>
+            <view class="prepare-text">这是一件沟通工具，不替代专业心理咨询。</view>
+          </view>
+        </view>
+
+        <view class="participant-panel">
+          <view class="participant-title">这次怎么记录？</view>
+          <view class="participant-switch">
+            <view class="participant-option {{participantMode === 'two' ? 'active' : ''}}" data-value="two" bindtap="chooseParticipantMode">
+              <view class="participant-name">两人对话</view>
+              <view class="participant-desc">记录双方回答</view>
+            </view>
+            <view class="participant-option {{participantMode === 'one' ? 'active' : ''}}" data-value="one" bindtap="chooseParticipantMode">
+              <view class="participant-name">一人填写</view>
+              <view class="participant-desc">只留下自己的回答</view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view class="bottom-bar single">
+        <view class="primary-button bottom-button turn-button" bindtap="startDialogue">翻到第一题</view>
+      </view>
+    </block>
+
+    <block wx:elif="{{stage === 'question'}}">
+      <view class="flow-head">
+        <view class="progress-copy">
+          <view class="progress-sub">第 {{currentGroup}} 组</view>
+          <view class="progress-dot"></view>
+          <view class="progress-sub">{{groupQuestionIndex}} / 12</view>
+        </view>
+        <view class="progress-total">{{currentIndex}} / 36</view>
+      </view>
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{progressPercent}}%;"></view>
+      </view>
+
+      <view class="question-card {{questionMotion ? 'is-turning' : ''}}">
+        <image class="question-art" src="/assets/flow-question.jpg" mode="aspectFit"></image>
+        <view class="question-scrim"></view>
+        <view class="question-content">
+          <view class="question-index">Q{{currentIndex}}</view>
+          <view class="question-text">{{currentQuestion.text}}</view>
+        </view>
+      </view>
+
+      <view class="question-timer">
+        <view class="timer-label">本题参考时间</view>
+        <view class="timer-pill">{{timerText}}</view>
+      </view>
+
+      <view wx:if="{{mode === 'same-device'}}" class="answer-area">
+        <view class="answer-head">
+          <view class="answer-title">回答记录</view>
+          <view class="answer-hint">可只记关键词，完整对话留在当下。</view>
+        </view>
+
+        <view class="answer-preview" data-role="a" bindtap="openAnswerDialog">
+          <view class="answer-preview-head">
+            <view class="answer-label">我的回答</view>
+            <view class="answer-edit">{{answerA ? '编辑' : '填写'}}</view>
+          </view>
+          <view wx:if="{{answerA}}" class="answer-text">{{answerA}}</view>
+          <view wx:else class="answer-placeholder">等待输入回答</view>
+        </view>
+
+        <view wx:if="{{participantMode === 'two'}}" class="answer-preview" data-role="b" bindtap="openAnswerDialog">
+          <view class="answer-preview-head">
+            <view class="answer-label">对方的回答</view>
+            <view class="answer-edit">{{answerB ? '编辑' : '填写'}}</view>
+          </view>
+          <view wx:if="{{answerB}}" class="answer-text">{{answerB}}</view>
+          <view wx:else class="answer-placeholder">等待输入回答</view>
+        </view>
+      </view>
+
+      <view wx:else class="answer-area">
+        <view class="sync-row">
+          <view class="sync-pill">{{remoteReady ? '对方已加入' : '等待对方加入'}}</view>
+          <view class="sync-pill">{{mySubmitted ? '你已提交' : '等待你提交'}}</view>
+        </view>
+
+        <view class="answer-preview {{mySubmitted ? 'locked' : ''}}" data-role="self" bindtap="openAnswerDialog">
+          <view class="answer-preview-head">
+            <view class="answer-label">我的回答</view>
+            <view class="answer-edit">{{mySubmitted ? '已提交' : (selfAnswer ? '编辑' : '填写')}}</view>
+          </view>
+          <view wx:if="{{selfAnswer}}" class="answer-text">{{selfAnswer}}</view>
+          <view wx:else class="answer-placeholder">等待输入回答</view>
+          <button wx:if="{{!mySubmitted && selfAnswer}}" class="submit-chip" loading="{{submitting}}" catchtap="submitSelfAnswer">
+            提交本题
+          </button>
+        </view>
+
+        <view wx:if="{{mySubmitted && !bothSubmitted}}" class="wait-note">你已提交，等对方也提交后会显示双方答案。</view>
+
+        <view wx:if="{{bothSubmitted}}" class="peer-read-card" bindtap="openPeerAnswerDialog">
+          <view>
+            <view class="peer-read-title">{{peerAnswerRead ? '已阅读双方回答' : '阅读对方回答'}}</view>
+            <view class="peer-read-desc">{{peerAnswerRead ? '可以继续翻到下一题。' : '读完并确认后，才可以进入下一题。'}}</view>
+          </view>
+          <view class="peer-read-action">{{peerAnswerRead ? '再看' : '查看'}}</view>
+        </view>
+      </view>
+
+      <view class="bottom-bar nav-row">
+        <view class="ghost-button nav-button" bindtap="previousQuestion">{{currentIndex === 1 ? '返回准备页' : '上一题'}}</view>
+        <view class="primary-button nav-button turn-button" bindtap="nextQuestion">{{currentIndex === 36 ? '翻到对视' : '翻到下一题'}}</view>
+      </view>
+    </block>
+
+    <block wx:elif="{{stage === 'break'}}">
+      <view class="center-stage break-stage">
+        <view class="kicker">TAKE A PAUSE</view>
+        <view class="title">第 {{currentGroup}} 组完成</view>
+        <view class="subtitle">已经完成 {{currentIndex}} / 36 题。可以喝口水，或者安静待一会儿。</view>
+        <view class="break-card">
+          <view class="break-number">{{currentIndex}}</view>
+          <view class="break-text">已完成题目</view>
+        </view>
+      </view>
+      <view class="bottom-bar single">
+        <view class="primary-button bottom-button turn-button" bindtap="continueNextGroup">翻到下一组</view>
+      </view>
+    </block>
+
+    <block wx:elif="{{stage === 'gaze'}}">
+      <view class="gaze-panel">
+        <view class="kicker">EYE CONTACT</view>
+        <view class="gaze-title">互相凝视 4 分钟</view>
+        <view class="gaze-time">{{gazeText}}</view>
+        <view class="gaze-desc">请互相凝视对方的眼睛。时间到后，也需要你们手动结束。</view>
+      </view>
+      <view class="bottom-bar single">
+        <view class="secondary-button bottom-button turn-button" bindtap="finishDialogue">翻到完成页</view>
+      </view>
+    </block>
+
+    <view class="page-number">{{stage === 'question' ? currentIndex : ''}}</view>
+  </view>
+
+  <view wx:if="{{answerDialogVisible}}" class="dialog-mask" catchtap="closeAnswerDialog">
+    <view class="answer-dialog" catchtap="noop">
+      <view class="dialog-grip"></view>
+      <view class="dialog-title">{{answerDialogTitle}}</view>
+      <textarea
+        class="dialog-input"
+        value="{{answerDraft}}"
+        placeholder="{{answerDialogPlaceholder}}"
+        focus="{{answerDialogVisible}}"
+        maxlength="800"
+        bindinput="onAnswerDraft"
+      ></textarea>
+      <view class="dialog-actions">
+        <view class="ghost-button dialog-button" bindtap="closeAnswerDialog">取消</view>
+        <view class="primary-button dialog-button" bindtap="saveAnswerDialog">保存</view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{peerAnswerDialogVisible}}" class="peer-mask">
+    <view class="peer-dialog">
+      <view class="dialog-grip"></view>
+      <view class="dialog-title">双方的回答</view>
+      <view class="peer-question">Q{{currentIndex}} {{currentQuestion.text}}</view>
+      <view class="peer-answer-list">
+        <view wx:for="{{visibleAnswers}}" wx:key="openid" class="peer-answer-item {{item.openid === myOpenid ? 'self' : ''}}">
+          <view class="peer-answer-name">{{item.openid === myOpenid ? '我的回答' : (item.nickName || '对方的回答')}}</view>
+          <view class="peer-answer-text">{{item.answer || '未记录'}}</view>
+        </view>
+      </view>
+      <view class="primary-button peer-confirm" bindtap="confirmPeerAnswerRead">我已读完</view>
+    </view>
+  </view>
+</view>

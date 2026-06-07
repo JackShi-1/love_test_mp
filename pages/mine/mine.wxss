@@ -1,0 +1,108 @@
+.mine-book {
+  padding: 0 0 76rpx;
+  background: #fffdf8;
+}
+
+.archive-hero {
+  padding: 48rpx 40rpx 24rpx;
+}
+
+.profile-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18rpx;
+  margin: 2rpx 32rpx 0;
+  padding: 24rpx 0 24rpx;
+  border-bottom: 1rpx solid rgba(54, 76, 88, 0.11);
+  background: transparent;
+}
+
+.profile-label {
+  color: #9a6a4e;
+  font-size: 22rpx;
+  font-weight: 650;
+}
+
+.profile-name {
+  margin-top: 6rpx;
+  color: #263640;
+  font-size: 32rpx;
+  font-weight: 650;
+}
+
+.profile-action {
+  flex: 0 0 auto;
+  padding: 10rpx 18rpx;
+  border-radius: 999rpx;
+  color: #9a5a39;
+  background: #fbede3;
+  font-size: 24rpx;
+  font-weight: 650;
+}
+
+.quick-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin: 0 32rpx;
+  border-bottom: 1rpx solid rgba(54, 76, 88, 0.11);
+}
+
+.quick-card {
+  padding: 28rpx 20rpx;
+  border-radius: 0;
+  color: #365c73;
+  background: transparent;
+  font-size: 28rpx;
+  font-weight: 650;
+  text-align: center;
+}
+
+.quick-card + .quick-card {
+  border-left: 1rpx solid rgba(54, 76, 88, 0.11);
+}
+
+.records-title {
+  margin: 44rpx 32rpx 0;
+}
+
+.empty-card,
+.record-card {
+  margin: 18rpx 32rpx 0;
+  padding: 28rpx;
+  border-radius: 22rpx;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow:
+    0 10rpx 28rpx rgba(66, 55, 43, 0.05),
+    inset 0 0 0 1rpx rgba(54, 76, 88, 0.08);
+}
+
+.empty-card {
+  margin: 18rpx 32rpx 0;
+  color: #6d777b;
+  font-size: 26rpx;
+  line-height: 1.5;
+}
+
+.record-main {
+  color: #263640;
+  font-size: 32rpx;
+  font-weight: 650;
+}
+
+.record-meta {
+  margin-top: 10rpx;
+  color: #7b8588;
+  font-size: 26rpx;
+}
+
+.record-mode {
+  display: inline-flex;
+  margin-top: 18rpx;
+  padding: 8rpx 16rpx;
+  border-radius: 999rpx;
+  color: #9a5a39;
+  background: #fbede3;
+  font-size: 24rpx;
+}

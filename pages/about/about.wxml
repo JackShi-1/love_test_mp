@@ -1,0 +1,25 @@
+<view class="page about-page safe-bottom">
+  <view class="book-page about-book">
+    <view class="about-hero">
+      <view class="kicker">ABOUT</view>
+      <view class="title">关于我们</view>
+      <view class="subtitle">爱情三十六问是一款轻量的亲密关系沟通工具。</view>
+    </view>
+
+    <view class="about-card">
+      <view class="about-title">版本信息</view>
+      <view class="about-text">v1.0.0</view>
+    </view>
+
+    <view class="about-card">
+      <view class="about-title">内容来源</view>
+      <view class="about-text">题目包含亚瑟·阿伦原版 36 问，以及《再见爱人》节目改编版表达。</view>
+    </view>
+
+    <view class="about-card">
+      <view class="about-title">隐私说明</view>
+      <view class="about-text">对话记录仅用于当前用户和同一房间参与者查看。请谨慎分享包含私人回答的长图或记录。</view>
+    </view>
+    <view class="page-number">I</view>
+  </view>
+</view>
