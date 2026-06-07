@@ -2,7 +2,7 @@ page {
   min-height: 100%;
   color: #263640;
   background: #f7f5f0;
-  font-family: "LXGW WenKai", "Kaiti SC", "STKaiti", "Songti SC", serif;
+  font-family: "Kaiti SC", "STKaiti", "Songti SC", "SimSun", serif;
 }
 
 view,
@@ -10,7 +10,7 @@ text,
 button,
 input,
 textarea {
-  font-family: "LXGW WenKai", "Kaiti SC", "STKaiti", "Songti SC", serif;
+  font-family: "Kaiti SC", "STKaiti", "Songti SC", "SimSun", serif;
 }
 
 .page {
@@ -53,7 +53,7 @@ textarea {
 
 .title {
   color: #263640;
-  font-family: "LXGW WenKai", "Kaiti SC", "STKaiti", "Songti SC", serif;
+  font-family: "Kaiti SC", "STKaiti", "Songti SC", "SimSun", serif;
   font-size: 44rpx;
   font-weight: 650;
   letter-spacing: 0;

@@ -1,5 +1,3 @@
-const FONT_FAMILY = 'LXGW WenKai'
-const FONT_FILE_ID = 'cloud://cloud1-d0gkqrect0711f911.636c-cloud1-d0gkqrect0711f911-1440900961/LXGWWenKai-Regular.ttf'
 const { getSavedProfile } = require('./utils/api')
 
 App({
@@ -18,52 +16,8 @@ App({
         traceUser: true
       })
       this.globalData.cloudReady = true
-      this.loadFontFace()
       this.ensureLogin()
-    } else {
-      this.loadFontFace()
     }
-  },
-
-  loadFontFace() {
-    if (!wx.loadFontFace) {
-      return
-    }
-
-    if (!wx.cloud || !this.globalData.cloudReady) {
-      this.applyFontFace(FONT_FILE_ID)
-      return
-    }
-
-    wx.cloud.getTempFileURL({
-      fileList: [FONT_FILE_ID],
-      success: (res) => {
-        const file = res.fileList && res.fileList[0]
-        this.applyFontFace(file && file.tempFileURL ? file.tempFileURL : FONT_FILE_ID)
-      },
-      fail: (error) => {
-        console.warn('LXGW WenKai temp url failed', error)
-        this.applyFontFace(FONT_FILE_ID)
-      }
-    })
-  },
-
-  applyFontFace(sourceUrl) {
-    wx.loadFontFace({
-      global: true,
-      family: FONT_FAMILY,
-      source: `url("${sourceUrl}")`,
-      desc: {
-        style: 'normal',
-        weight: '400'
-      },
-      success: () => {
-        this.globalData.fontReady = true
-      },
-      fail: (error) => {
-        console.warn('LXGW WenKai font load failed', error)
-      }
-    })
   },
 
   ensureLogin() {

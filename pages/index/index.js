@@ -1,8 +1,4 @@
 const { questionSets } = require('../../data/questionSets')
-const { getSavedProfile, requestWechatProfile } = require('../../utils/api')
-
-const PROFILE_PROMPT_KEY = 'love36_profile_prompt_at'
-const PROFILE_PROMPT_INTERVAL = 24 * 60 * 60 * 1000
 
 const homeQuestionSets = questionSets
   .map((item) => ({
@@ -13,54 +9,7 @@ const homeQuestionSets = questionSets
 
 Page({
   data: {
-    questionSets: homeQuestionSets,
-    showProfilePrompt: false
-  },
-
-  onShow() {
-    this.maybeShowProfilePrompt()
-  },
-
-  maybeShowProfilePrompt() {
-    const profile = getSavedProfile()
-    if (profile && profile.nickName) {
-      this.setData({ showProfilePrompt: false })
-      return
-    }
-
-    const lastPromptAt = Number(wx.getStorageSync(PROFILE_PROMPT_KEY)) || 0
-    if (Date.now() - lastPromptAt < PROFILE_PROMPT_INTERVAL) {
-      this.setData({ showProfilePrompt: false })
-      return
-    }
-
-    setTimeout(() => {
-      const latestProfile = getSavedProfile()
-      if (!latestProfile || !latestProfile.nickName) {
-        this.setData({ showProfilePrompt: true })
-      }
-    }, 450)
-  },
-
-  useWechatProfile() {
-    requestWechatProfile()
-      .then(() => {
-        this.setData({ showProfilePrompt: false })
-        wx.showToast({ title: '昵称已保存', icon: 'none' })
-      })
-      .catch(() => {
-        this.deferProfilePrompt()
-        wx.showToast({ title: '可以继续匿名使用', icon: 'none' })
-      })
-  },
-
-  skipProfilePrompt() {
-    this.deferProfilePrompt()
-  },
-
-  deferProfilePrompt() {
-    wx.setStorageSync(PROFILE_PROMPT_KEY, Date.now())
-    this.setData({ showProfilePrompt: false })
+    questionSets: homeQuestionSets
   },
 
   chooseVersion(event) {

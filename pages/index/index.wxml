@@ -30,15 +30,4 @@
     </view>
     <view class="page-number">01</view>
   </view>
-
-  <view wx:if="{{showProfilePrompt}}" class="profile-mask">
-    <view class="profile-dialog">
-      <view class="profile-dialog-title">用你的微信昵称吗？</view>
-      <view class="profile-dialog-desc">昵称只用于房间参与者、回答记录和分享结果页展示，也可以先跳过。</view>
-      <view class="profile-dialog-actions">
-        <view class="profile-skip" bindtap="skipProfilePrompt">先跳过</view>
-        <view class="profile-confirm" bindtap="useWechatProfile">使用微信昵称</view>
-      </view>
-    </view>
-  </view>
 </view>

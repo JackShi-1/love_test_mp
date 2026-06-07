@@ -1,3 +1,11 @@
+const aronEnglishQuestions = [
+  'Given the choice of anyone in the world, whom would you want as a dinner guest?',
+  'Would you like to be famous? In what way?',
+  'Before making a telephone call, do you ever rehearse what you are going to say? Why?',
+  'What would constitute a "perfect" day for you?',
+  'When did you last sing to yourself? To someone else?'
+]
+
 const questionSets = [
   {
     id: 'goodbye-love',
@@ -98,7 +106,8 @@ const questionSets = [
   questions: set.questions.map((text, index) => ({
     index: index + 1,
     group: Math.floor(index / 12) + 1,
-    text
+    text,
+    english: set.id === 'aron' ? (aronEnglishQuestions[index] || '') : ''
   }))
 }))
 
