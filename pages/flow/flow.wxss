@@ -263,6 +263,13 @@
   line-height: 1.55;
 }
 
+.question-english {
+  margin-top: 24rpx;
+  color: #6d777b;
+  font-size: 25rpx;
+  line-height: 1.55;
+}
+
 .flow-question {
   min-height: 1320rpx;
 }

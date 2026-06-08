@@ -65,6 +65,7 @@
         <view class="question-content">
           <view class="question-index">Q{{currentIndex}}</view>
           <view class="question-text">{{currentQuestion.text}}</view>
+          <view wx:if="{{currentQuestion.english}}" class="question-english">{{currentQuestion.english}}</view>
         </view>
       </view>
 
