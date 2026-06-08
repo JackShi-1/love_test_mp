@@ -33,6 +33,7 @@
 - `getSessionState`：拉取房间、提交状态和可见答案。
 - `completeSession`：完成会话并生成历史记录。
 - `generateRecordImage`：读取历史记录、记录分享图生成状态。实际 PNG 分享图由小程序端 canvas 绘制，避免云函数图形库依赖。
+- `deleteRecord`：删除当前用户有权限访问的历史记录。
 
 ## 注意
 

@@ -62,18 +62,50 @@
 .action-list {
   display: flex;
   flex-direction: column;
-  gap: 18rpx;
+  gap: 20rpx;
   margin-top: 34rpx;
+}
+
+.complete-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 92rpx;
+  box-sizing: border-box;
+  border-radius: 18rpx;
+  font-size: 29rpx;
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+.complete-primary {
+  color: #ffffff;
+  background: #365c73;
+}
+
+.complete-secondary {
+  color: #365c73;
+  border: 1rpx solid rgba(54, 92, 115, 0.16);
+  background: #edf3f0;
+}
+
+.complete-ghost {
+  color: #365c73;
+  border: 1rpx solid rgba(54, 92, 115, 0.22);
+  background: rgba(255, 255, 255, 0.78);
 }
 
 .share-button {
   padding: 0;
   border: 0;
+  margin: 0;
 }
 
 .share-button[disabled] {
-  color: rgba(154, 90, 57, 0.72);
-  background: #f7e4d9;
+  color: rgba(54, 92, 115, 0.52);
+  border-color: rgba(54, 92, 115, 0.12);
+  background: rgba(237, 243, 240, 0.62);
 }
 
 .share-button::after {

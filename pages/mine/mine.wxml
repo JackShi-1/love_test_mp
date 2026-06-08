@@ -6,7 +6,7 @@
       <view class="subtitle">这里保存你完成过的对话，也像一本可以翻回去看的旧页。</view>
     </view>
 
-    <view class="profile-card" bindtap="loginWithWechat">
+    <view class="profile-card" bindtap="openNickDialog">
       <view>
         <view class="profile-label">当前昵称</view>
         <view class="profile-name">{{userNickName || '未设置昵称'}}</view>
@@ -20,15 +20,51 @@
     </view>
 
     <view class="section-title records-title">历史记录</view>
-    <view wx:if="{{records.length === 0}}" class="empty-card">
+    <view wx:if="{{recordsLoading}}" class="loading-card">
+      <view class="loading-spinner"></view>
+      <view>正在翻找历史记录</view>
+    </view>
+    <view wx:elif="{{records.length === 0}}" class="empty-card">
       <view>还没有完成的对话记录。</view>
     </view>
 
-    <view wx:for="{{records}}" wx:key="id" class="record-card" data-id="{{item._id || item.id}}" data-local="{{!item._id && item.mode === 'same-device'}}" bindtap="openRecord">
-      <view class="record-main">{{item.versionTitle}}</view>
+    <view wx:for="{{records}}" wx:key="recordKey" class="record-card" data-id="{{item.recordKey}}" data-local="{{!item._id && item.mode === 'same-device'}}" bindtap="openRecord">
+      <view class="record-head">
+        <view class="record-main">{{item.versionTitle}}</view>
+        <view
+          class="record-delete"
+          aria-label="删除记录"
+          data-id="{{item.recordKey}}"
+          data-cloud-id="{{item._id || item.cloudRecordId || ''}}"
+          data-local="{{!item._id && item.mode === 'same-device'}}"
+          catchtap="confirmDeleteRecord"
+        >
+          <view class="trash-icon"></view>
+        </view>
+      </view>
       <view class="record-meta">{{item.dateText}} · {{item.durationText}}</view>
       <view class="record-mode">{{item.mode === 'invite' ? '双机同步答' : '面对面同屏'}}</view>
     </view>
     <view class="page-number">A</view>
+  </view>
+
+  <view wx:if="{{nickDialogVisible}}" class="edit-mask" catchtap="closeNickDialog">
+    <view class="edit-dialog" catchtap="noop">
+      <view class="dialog-grip"></view>
+      <view class="edit-title">修改昵称</view>
+      <input
+        class="edit-input"
+        type="nickname"
+        value="{{nickDraft}}"
+        maxlength="10"
+        focus="{{nickDialogVisible}}"
+        placeholder="填写你的昵称"
+        bindinput="onNickInput"
+      />
+      <view class="edit-actions">
+        <view class="ghost-button edit-button" bindtap="closeNickDialog">取消</view>
+        <view class="primary-button edit-button" bindtap="saveNickName">保存</view>
+      </view>
+    </view>
   </view>
 </view>

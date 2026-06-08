@@ -17,13 +17,13 @@
     </view>
 
     <view class="action-list">
-      <view class="primary-button turn-button" bindtap="openRecord">查看完整记录</view>
+      <view class="complete-button complete-primary turn-button" bindtap="openRecord">查看完整记录</view>
       <button
-        class="secondary-button share-button"
+        class="complete-button complete-secondary share-button"
         open-type="share"
         disabled="{{!shareReady}}"
       >{{shareReady ? '分享结果' : '正在准备分享'}}</button>
-      <view class="ghost-button" bindtap="backHome">回到封面</view>
+      <view class="complete-button complete-ghost" bindtap="backHome">回到封面</view>
     </view>
     <view class="page-number">END</view>
   </view>

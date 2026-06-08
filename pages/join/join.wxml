@@ -11,8 +11,9 @@
     </view>
 
     <view wx:if="{{error}}" class="state-card">
-      <view class="state-title">暂时无法进入</view>
-      <view class="state-desc">{{error}}</view>
+      <view class="state-badge">{{errorType === 'full' ? 'FULL' : 'NOTICE'}}</view>
+      <view class="state-title">{{errorTitle || '暂时无法进入'}}</view>
+      <view class="state-desc">{{errorDesc || '房间同步失败，请稍后再试。'}}</view>
     </view>
 
     <view wx:elif="{{loading}}" class="state-card">
@@ -51,6 +52,9 @@
       </button>
       <view wx:if="{{state.members.length < 2}}" class="ghost-button join-button preview-button" data-preview="1" bindtap="startFlow">先进入看看</view>
       <view wx:else class="primary-button join-button turn-button" bindtap="startFlow">翻到准备页</view>
+    </view>
+    <view wx:if="{{error && !loading}}" class="join-actions single">
+      <view class="primary-button join-button" bindtap="backHome">回到封面</view>
     </view>
 
     <view class="page-number">03</view>

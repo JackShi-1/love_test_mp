@@ -55,6 +55,13 @@ function saveLocalRecord(record) {
   return record
 }
 
+function deleteLocalRecord(recordId, cloudRecordId = '') {
+  const records = getLocalRecords()
+  wx.setStorageSync('love36_records', records.filter((item) => (
+    item.id !== recordId && (!cloudRecordId || item.cloudRecordId !== cloudRecordId)
+  )))
+}
+
 function getLocalRecord(recordId) {
   return getLocalRecords().find((item) => item.id === recordId)
 }
@@ -80,6 +87,7 @@ module.exports = {
   requestWechatProfile,
   getLocalRecords,
   saveLocalRecord,
+  deleteLocalRecord,
   getLocalRecord,
   formatDuration,
   formatClock

@@ -13,6 +13,29 @@ function getRoomName(session) {
   return `${ROOM_ADJECTIVES[seed % ROOM_ADJECTIVES.length]}${ROOM_NOUNS[seed % ROOM_NOUNS.length]}`
 }
 
+function getJoinErrorState(error) {
+  const message = String((error && error.message) || error || '')
+  if (message.includes('房间已满')) {
+    return {
+      errorType: 'full',
+      errorTitle: '房间已满',
+      errorDesc: '这个双人房间已经有两位参与者了，可以请邀请人重新创建一个房间。'
+    }
+  }
+  if (message.includes('房间不存在') || message.includes('not found')) {
+    return {
+      errorType: 'missing',
+      errorTitle: '房间不存在',
+      errorDesc: '这个邀请可能已经失效，或者房间信息有误。'
+    }
+  }
+  return {
+    errorType: 'unknown',
+    errorTitle: '暂时无法进入',
+    errorDesc: '房间同步失败，请稍后再试，或请邀请人重新发起邀请。'
+  }
+}
+
 Page({
   data: {
     sessionId: '',
@@ -24,6 +47,9 @@ Page({
     joining: false,
     state: null,
     error: '',
+    errorType: '',
+    errorTitle: '',
+    errorDesc: '',
     editingType: '',
     editingTitle: '',
     editingValue: '',
@@ -40,7 +66,11 @@ Page({
       reused: options.reused === '1'
     })
     if (!options.sessionId) {
-      this.setData({ loading: false, error: '房间信息不存在' })
+      this.setData({
+        loading: false,
+        error: 'missing sessionId',
+        ...getJoinErrorState('房间不存在')
+      })
       return
     }
     if (this.data.role === 'guest') {
@@ -94,16 +124,26 @@ Page({
         this.setData({
           state: res.session,
           roomName: getRoomName(res.session),
-          error: ''
+          error: '',
+          errorType: '',
+          errorTitle: '',
+          errorDesc: ''
         })
         this.startPolling()
       })
       .catch((error) => {
-        this.setData({ error: error.message || '加入房间失败' })
+        this.setData({
+          error: error.message || 'join failed',
+          ...getJoinErrorState(error)
+        })
       })
       .finally(() => {
         this.setData({ joining: false, loading: false })
       })
+  },
+
+  backHome() {
+    wx.reLaunch({ url: '/pages/index/index' })
   },
 
   refreshState() {

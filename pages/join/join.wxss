@@ -121,6 +121,20 @@
   font-weight: 650;
 }
 
+.state-badge {
+  display: inline-flex;
+  padding: 7rpx 14rpx;
+  border-radius: 999rpx;
+  color: #9a5a39;
+  background: #fbede3;
+  font-size: 21rpx;
+  font-weight: 650;
+}
+
+.state-card .state-title {
+  margin-top: 18rpx;
+}
+
 .room-meta-row .state-title {
   margin-top: 0;
 }
@@ -197,6 +211,10 @@
   border-radius: 24rpx;
   background: transparent;
   box-shadow: none;
+}
+
+.join-actions.single {
+  justify-content: center;
 }
 
 .join-button {
