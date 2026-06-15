@@ -19,6 +19,10 @@ Page({
     })
   },
 
+  goPartyGames() {
+    wx.navigateTo({ url: '/pages/party-games/party-games' })
+  },
+
   goMine() {
     wx.navigateTo({ url: '/pages/mine/mine' })
   },

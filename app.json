@@ -1,6 +1,8 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/party-games/party-games",
+    "pages/party-play/party-play",
     "pages/mode/mode",
     "pages/join/join",
     "pages/flow/flow",

@@ -27,6 +27,8 @@
       <view bindtap="goMine">我的记录</view>
       <view class="dot"></view>
       <view bindtap="goGuide">使用说明</view>
+      <view class="dot"></view>
+      <view bindtap="goPartyGames">其他游戏</view>
     </view>
     <view class="page-number">01</view>
   </view>

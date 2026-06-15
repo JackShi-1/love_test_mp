@@ -1,0 +1,41 @@
+<view class="page play-page safe-bottom tone-{{game.tone}}">
+  <view class="book-page play-book">
+    <image class="play-bg" src="{{game.image}}" mode="aspectFill"></image>
+    <view class="play-bg-scrim"></view>
+
+    <view class="play-head">
+      <view>
+        <view class="play-title">{{game.originalTitle}}</view>
+        <view class="play-subtitle">{{game.title}}</view>
+      </view>
+    </view>
+
+    <view class="deck-wrap">
+      <view class="draw-pile">
+        <view class="pile-card pile-one"></view>
+        <view class="pile-card pile-two"></view>
+        <view class="pile-card pile-three"></view>
+      </view>
+      <view class="deck-shadow one"></view>
+      <view class="deck-shadow two"></view>
+      <view class="deck-shadow three"></view>
+      <view class="question-card motion-{{cardMotion}}">
+        <view class="brand-strip">
+          <view>{{game.originalTitle}}</view>
+          <view class="strip-dot"></view>
+        </view>
+        <view class="question-meta">
+          <view>{{question.badge}}</view>
+        </view>
+        <view class="question-body">
+          <view class="question-english">{{question.english}}</view>
+          <view class="question-chinese">{{question.chinese}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="draw-button" bindtap="nextQuestion">抽一张</view>
+
+    <view class="page-number">PLAY</view>
+  </view>
+</view>

@@ -1,0 +1,38 @@
+<view class="page party-page safe-bottom">
+  <view class="book-page party-book">
+    <view class="party-hero">
+      <view class="kicker">CONNECTION DECKS</view>
+      <view class="title">其他游戏</view>
+      <view class="subtitle">换一种节奏继续聊。这里是更适合聚会、夜谈和多人互动的随机题卡。</view>
+    </view>
+
+    <view class="game-list">
+      <view wx:for="{{games}}" wx:key="id" class="game-card tone-{{item.tone}}" data-id="{{item.id}}" bindtap="chooseGame">
+        <image class="game-art" src="{{item.image}}" mode="aspectFill"></image>
+        <view class="game-scrim"></view>
+        <view class="brand-panel">
+          <view wx:if="{{item.id === 'wnrs'}}" class="wnrs-mark">WE'RE NOT REALLY STRANGERS</view>
+          <view wx:elif="{{item.id === 'hygge'}}" class="hygge-mark">
+            <view class="hygge-small">THE</view>
+            <view class="hygge-main">HYGGE</view>
+            <view class="hygge-small">GAME</view>
+          </view>
+          <view wx:else class="debate-mark">
+            <view class="bolt">↯</view>
+            <view>LIGHTNING DEBATES</view>
+          </view>
+        </view>
+        <view class="game-content">
+          <view class="game-original">{{item.originalTitle}}</view>
+          <view class="game-title">{{item.title}}</view>
+          <view class="game-desc">{{item.summary}}</view>
+          <view class="game-tags">
+            <view wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this" class="game-tag">{{tag}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="page-number">G</view>
+  </view>
+</view>
